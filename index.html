@@ -1,1 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hope Makeup | Beauty by Hope's Touch</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&family=Playfair+Display:wght@400;600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #d4a5a5; /* Soft pink from the image */
+            --secondary-color: #f8f1f1; /* Light beige-pink background */
+            --accent-color: #c89595; /* Darker pink for accents */
+            --dark-color: #5a4a4a; /* Brownish-dark for text */
+            --light-color: #fff;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: var(--dark-color);
+            background-color: var(--secondary-color);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
+        .brand-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+        
+        .tagline {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+        
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: var(--primary-color) !important;
+            font-weight: 600;
+        }
+        
+        .nav-link {
+            color: var(--dark-color) !important;
+            font-weight: 500;
+            margin: 0 5px;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9)), 
+                        url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            margin-bottom: 50px;
+        }
+        
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+        }
+        
+        .hero-text {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .service-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background-color: white;
+            height: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(212, 165, 165, 0.2);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .price-tag {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 15px;
+        }
+        
+        .gallery-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            height: 100%;
+        }
+        
+        .gallery-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .gallery-card img {
+            height: 300px;
+            object-fit: cover;
+            width: 100%;
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .gallery-card:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .contact-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: 100%;
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .book-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .book-btn:hover {
+            background-color: var(--accent-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 165, 165, 0.3);
+        }
+        
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+        
+        .page-header {
+            background-color: rgba(212, 165, 165, 0.1);
+            padding: 100px 0 50px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        #map {
+            height: 400px;
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .testimonial-card {
+            border-left: 4px solid var(--primary-color);
+            background-color: white;
+            padding: 25px;
+            border-radius: 0 10px 10px 0;
+            height: 100%;
+        }
+        
+        .testimonial-img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .brand-name {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-spa me-2"></i>Hope Makeup
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="btn book-btn" href="booking.html">Book Now</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
+    <!-- Gallery Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="display-4 brand-name mb-3">Hope Makeup Gallery</h1>
+            <p class="tagline">Beauty by Hope's Touch</p>
+            <p class="lead">A visual showcase of stunning makeup transformations</p>
+        </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12">
+                    <h2 class="section-title">Our Makeup Transformations</h2>
+                    <p class="text-center">Explore our portfolio of beautiful makeup looks created for various occasions.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Gallery Item 1 -->
+                <div class="col-md-4">
+                    <div class="gallery-card">
+                        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Soft Glam Makeup">
+                        <div class="gallery-overlay">
+                            <h5>Soft Glam Look</h5>
+                            <p>Natural enhancement for daytime events</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="col-md-4">
+                    <div class="gallery-card">
+                        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Bridal Makeup">
+                        <div class="gallery-overlay">
+                            <h5>Elegant Bridal</h5>
+                            <p>Timeless beauty for the special day</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="col-md-4">
+                    <div class="gallery-card">
+                        <img src="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Full Glam Makeup">
+                        <div class="gallery-overlay">
+                            <h5>Full Glam Evening</h5>
+                            <p>Bold and beautiful for night events</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 4 -->
+                <div class="col-md-4">
+                    <div class="gallery-card">
+                        <img src="https://images.unsplash.com/photo-1596703923338-48f1c07e4f2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Natural Makeup">
+                        <div class="gallery-overlay">
+                            <h5>Natural Beauty</h5>
+                            <p>Enhancing your natural features</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 5 -->
+                <div class="col-md-4">
+                    <div class="gallery-card">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Party Makeup">
+                        <div class="gallery-overlay">
+                            <h5>Party Ready</h5>
+                            <p>Sparkling looks for celebrations</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 6 -->
+                <div class="col-md-4">
+                    <div class="gallery-card">
+                        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Eyelash Extensions">
+                        <div class="gallery-overlay">
+                            <h5>Lash Perfection</h5>
+                            <p>Cluster lashes for stunning eyes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Before & After Section -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h2 class="section-title mt-5">Before & After Transformations</h2>
+                    <p class="text-center mb-5">See the amazing transformations created by Hope's expert touch</p>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card service-card">
+                        <div class="card-body text-center">
+                            <div class="row mb-4">
+                                <div class="col-6">
+                                    <h6 class="text-muted">Before</h6>
+                                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="img-fluid rounded" alt="Before makeup">
+                                </div>
+                                <div class="col-6">
+                                    <h6 class="text-primary">After</h6>
+                                    <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="img-fluid rounded" alt="After makeup">
+                                </div>
+                            </div>
+                            <h5>Soft Glam Transformation</h5>
+                            <p>A beautiful daytime look enhancing natural features</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card service-card">
+                        <div class="card-body text-center">
+                            <div class="row mb-4">
+                                <div class="col-6">
+                                    <h6 class="text-muted">Before</h6>
+                                    <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="img-fluid rounded" alt="Before makeup">
+                                </div>
+                                <div class="col-6">
+                                    <h6 class="text-primary">After</h6>
+                                    <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="img-fluid rounded" alt="After makeup">
+                                </div>
+                            </div>
+                            <h5>Bridal Makeover</h5>
+                            <p>Elegant and timeless look for a special day</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Page Content (Will be separate page but shown here for demo) -->
+    <section class="py-5 bg-white" id="services-preview">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12">
+                    <h2 class="section-title">Our Services</h2>
+                    <p class="text-center">Professional makeup services tailored to your needs</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card service-card text-center h-100">
+                        <div class="card-body">
+                            <div class="service-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4 class="card-title">Soft Glam</h4>
+                            <p class="card-text">A natural, enhanced look perfect for daytime events, photoshoots, or everyday elegance. Focuses on enhancing your natural beauty with subtle contouring and neutral tones.</p>
+                            <div class="price-tag">R250</div>
+                            <a href="booking.html" class="btn book-btn mt-3">Book This Service</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card service-card text-center h-100">
+                        <div class="card-body">
+                            <div class="service-icon">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <h4 class="card-title">Full Glam</h4>
+                            <p class="card-text">A complete, dramatic look for special occasions, evenings out, or events where you want to make a statement. Includes full contouring, bold eyeshadow, and defined features.</p>
+                            <div class="price-tag">R350</div>
+                            <a href="booking.html" class="btn book-btn mt-3">Book This Service</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card service-card text-center h-100">
+                        <div class="card-body">
+                            <div class="service-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <h4 class="card-title">Cluster Lashes</h4>
+                            <p class="card-text">Enhance your eyes with beautiful cluster lash extensions. Adds volume and length to your natural lashes for a stunning, eye-opening effect that lasts.</p>
+                            <div class="price-tag">R120</div>
+                            <a href="booking.html" class="btn book-btn mt-3">Book This Service</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Page Preview -->
+    <section class="py-5" id="contact-preview">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12">
+                    <h2 class="section-title">Contact Hope Makeup</h2>
+                    <p class="text-center">Get in touch to book your appointment or ask questions</p>
+                </div>
+            </div>
+            
+            <div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="contact-card text-center">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h4>Call Us</h4>
+                        <p>Available during business hours</p>
+                        <a href="tel:0728562814" class="btn book-btn mt-2">072 856 2814</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="contact-card text-center">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h4>WhatsApp</h4>
+                        <p>Quickest way to reach us</p>
+                        <a href="https://wa.me/27728562814" class="btn whatsapp-btn mt-2" target="_blank">
+                            <i class="fab fa-whatsapp me-2"></i>Message on WhatsApp
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="contact-card text-center">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4>Email</h4>
+                        <p>For detailed inquiries</p>
+                        <a href="mailto:info@hopemakeup.com" class="btn book-btn mt-2">info@hopemakeup.com</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Map Section -->
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="mb-4 text-center">Our Location</h3>
+                    <p class="text-center mb-4">Visit our studio for a personalized makeup experience</p>
+                    
+                    <div id="map"></div>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <h5>Studio Address</h5>
+                            <p><i class="fas fa-map-marker-alt me-2 text-primary"></i> 123 Beauty Street, Cosmetics District, Johannesburg, 2000</p>
+                            <h5 class="mt-4">Business Hours</h5>
+                            <p><i class="fas fa-clock me-2 text-primary"></i> Monday - Friday: 9:00 AM - 6:00 PM</p>
+                            <p><i class="fas fa-clock me-2 text-primary"></i> Saturday: 10:00 AM - 4:00 PM</p>
+                            <p><i class="fas fa-clock me-2 text-primary"></i> Sunday: By appointment only</p>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h5>Book an Appointment</h5>
+                            <p>Ready to enhance your natural beauty? Book your makeup session with Hope today.</p>
+                            <div class="d-grid gap-2">
+                                <a href="booking.html" class="btn book-btn btn-lg">Book Online Now</a>
+                                <a href="https://wa.me/27728562814" class="btn whatsapp-btn btn-lg" target="_blank">
+                                    <i class="fab fa-whatsapp me-2"></i>Book via WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12">
+                    <h2 class="section-title">Client Testimonials</h2>
+                    <p class="text-center">See what clients say about Hope's makeup artistry</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" class="testimonial-img me-3" alt="Client">
+                            <div>
+                                <h5 class="mb-0">Amanda B.</h5>
+                                <small class="text-muted">Bridal Client</small>
+                            </div>
+                        </div>
+                        <p class="mb-0">"Hope did my wedding makeup and I felt like a princess all day! She listened to what I wanted and created the perfect look that lasted through tears and dancing."</p>
+                        <div class="mt-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" class="testimonial-img me-3" alt="Client">
+                            <div>
+                                <h5 class="mb-0">Chloe R.</h5>
+                                <small class="text-muted">Regular Client</small>
+                            </div>
+                        </div>
+                        <p class="mb-0">"I've been going to Hope for all my special events. Her soft glam is my favorite - it enhances my features without looking like I'm wearing too much makeup."</p>
+                        <div class="mt-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" class="testimonial-img me-3" alt="Client">
+                            <div>
+                                <h5 class="mb-0">Sarah T.</h5>
+                                <small class="text-muted">Graduation Makeup</small>
+                            </div>
+                        </div>
+                        <p class="mb-0">"Hope's cluster lashes are amazing! They looked so natural but made my eyes pop in all my graduation photos. She's truly talented and so easy to work with."</p>
+                        <div class="mt-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="star-half-alt fas text-warning"></i>
+                            <i class="far fa-star text-warning"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4 class="mb-4 brand-name">Hope Makeup</h4>
+                    <p class="tagline">Beauty by Hope's Touch</p>
+                    <p>A beauty makeup artist enhances a person's natural features and creates stunning looks for various occasions.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <h4 class="mb-4">Quick Links</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="services.html" class="text-white text-decoration-none">Services & Pricing</a></li>
+                        <li class="mb-2"><a href="gallery.html" class="text-white text-decoration-none">Gallery</a></li>
+                        <li class="mb-2"><a href="contact.html" class="text-white text-decoration-none">Contact Us</a></li>
+                        <li class="mb-2"><a href="booking.html" class="text-white text-decoration-none">Book Online</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <h4 class="mb-4">Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> 123 Beauty Street, Cosmetics District, Johannesburg, 2000</p>
+                    <p><i class="fas fa-phone me-2"></i> 072 856 2814</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@hopemakeup.com</p>
+                    <p><i class="fas fa-clock me-2"></i> Mon-Fri: 9am-6pm, Sat: 10am-4pm</p>
+                </div>
+            </div>
+            
+            <hr class="mt-4 mb-4">
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2023 Hope Makeup. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>Created with <i class="fas fa-heart text-danger"></i> for beauty lovers</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Leaflet JS for Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        // Initialize map when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize map (centered on Johannesburg for this example)
+            const map = L.map('map').setView([-26.2041, 28.0473], 13);
+            
+            // Add tile layer
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            
+            // Add marker for the salon location
+            L.marker([-26.2041, 28.0473]).addTo(map)
+                .bindPopup('<b>Hope Makeup Studio</b><br>123 Beauty Street, Johannesburg')
+                .openPopup();
+            
+            // Gallery filter functionality
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-card');
+            
+            if (filterButtons.length > 0) {
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        // Remove active class from all buttons
+                        filterButtons.forEach(btn => btn.classList.remove('active'));
+                        
+                        // Add active class to clicked button
+                        this.classList.add('active');
+                        
+                        const filterValue = this.getAttribute('data-filter');
+                        
+                        // Show/hide gallery items based on filter
+                        galleryItems.forEach(item => {
+                            if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                                item.style.display = 'block';
+                                setTimeout(() => {
+                                    item.style.opacity = '1';
+                                    item.style.transform = 'scale(1)';
+                                }, 10);
+                            } else {
+                                item.style.opacity = '0';
+                                item.style.transform = 'scale(0.8)';
+                                setTimeout(() => {
+                                    item.style.display = 'none';
+                                }, 300);
+                            }
+                        });
+                    });
+                });
+            }
+            
+            // Animation for cards when they come into view
+            const cards = document.querySelectorAll('.service-card, .gallery-card, .testimonial-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // Booking buttons functionality
+            const bookButtons = document.querySelectorAll('.book-btn, .whatsapp-btn');
+            bookButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    if (this.getAttribute('href') === 'booking.html' || !this.getAttribute('href')) {
+                        e.preventDefault();
+                        // In a real site, this would open a booking form
+                        alert('Booking system would open here. For now, please contact Hope at 072 856 2814 to book your appointment.');
+                    }
+                });
+            });
+            
+            // Mobile-first optimization message
+            if (window.innerWidth < 768) {
+                console.log("Hope Makeup website optimized for mobile clients 💄");
+            }
+        });
+    </script>
+</body>
+</html>
